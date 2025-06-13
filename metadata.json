@@ -1,0 +1,5 @@
+{
+  "name": "Roleta da Sorte",
+  "description": "Uma plataforma web para criar listas personalizadas e realizar sorteios com uma roleta animada. Ideal para dinâmicas, eventos e qualquer situação que precise de um sorteio divertido e visual.",
+  "requestFramePermissions": []
+}
