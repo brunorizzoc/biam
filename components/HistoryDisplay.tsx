@@ -9,7 +9,7 @@ interface HistoryDisplayProps {
 }
 
 const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const exportHistory = (format: 'txt' | 'csv') => {
     if (history.length === 0) return;
@@ -17,10 +17,10 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
     const filename = `historico_sorteio_${new Date().toISOString().slice(0,10)}.${format}`;
 
     if (format === 'txt') {
-      content = history.map(entry => `${entry.name} (Sorteado em: ${entry.date})`).join('\n');
+      content = history.map((entry: HistoryEntry) => `${entry.name} (Sorteado em: ${entry.date})`).join('\n');
     } else { // csv
       content = "Nome,Data do Sorteio\n";
-      content += history.map(entry => `"${entry.name.replace(/"/g, '""')}","${entry.date}"`).join('\n');
+      content += history.map((entry: HistoryEntry) => `"${entry.name.replace(/"/g, '""')}","${entry.date}"`).join('\n');
     }
 
     const blob = new Blob([content], { type: format === 'txt' ? 'text/plain;charset=utf-8;' : 'text/csv;charset=utf-8;' });
@@ -57,7 +57,6 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
     );
   }
 
-
   return (
     <div className="w-full max-w-md mt-6">
       <button 
@@ -74,7 +73,7 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
           {history.length > 0 ? (
             <>
               <ul className="max-h-60 overflow-y-auto space-y-2 mb-4 pr-2">
-                {history.map((entry, idx) => (
+                {[...history].reverse().map((entry: HistoryEntry, idx: number) => (
                   <li key={entry.id} className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-md text-sm flex justify-between items-center shadow-sm">
                     <span className="font-bold text-primary dark:text-primary-light mr-2 min-w-[2.5em] text-center">{`${idx + 1}º`}</span>
                     <span className="font-medium text-gray-800 dark:text-gray-200 break-all flex-1">{entry.name}</span>
