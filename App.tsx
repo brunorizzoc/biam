@@ -108,22 +108,8 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-start gap-8 p-4 pt-6 sm:p-6 sm:pt-10 bg-gradient-to-br from-primary-light/20 via-background to-secondary-light/20 dark:from-primary-dark/30 dark:via-dark-background dark:to-secondary-dark/30 transition-colors duration-300">
       <header className="text-center w-full max-w-3xl mx-auto flex flex-col items-center">
-        <div className="w-full flex flex-col sm:flex-row gap-4 mb-6 justify-center items-center">
-          <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 min-h-[90px] flex items-center justify-center border border-gray-200 dark:border-gray-700">
-            {/* Anúncio 1 - insira o código do Google Ads aqui */}
-            <span className="text-gray-400 text-xs">Anúncio 1</span>
-          </div>
-          <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 min-h-[90px] flex items-center justify-center border border-gray-200 dark:border-gray-700">
-            {/* Anúncio 2 - insira o código do Google Ads aqui */}
-            <span className="text-gray-400 text-xs">Anúncio 2</span>
-          </div>
-          <div className="flex-1 bg-white dark:bg-gray-800 rounded-xl shadow-md p-4 min-h-[90px] flex items-center justify-center border border-gray-200 dark:border-gray-700">
-            {/* Anúncio 3 - insira o código do Google Ads aqui */}
-            <span className="text-gray-400 text-xs">Anúncio 3</span>
-          </div>
-        </div>
         <h1 className="text-5xl sm:text-6xl font-semibold text-primary dark:text-primary-light tracking-tight"> {/* Removido font-lobster, usando Poppins com peso maior */}
-          Roleta da Sorte
+          Roleta
         </h1>
         <p className="text-md text-gray-500 dark:text-gray-400 mt-2">
           Gire a roleta e descubra o vencedor!
@@ -172,7 +158,7 @@ const App: React.FC = () => {
       />
       
       <footer className="mt-auto pt-8 pb-4 text-center text-xs text-gray-500 dark:text-gray-400">
-        <p>&copy; {new Date().getFullYear()} Roleta da Sorte. Feito com paixão.</p>
+        <p>&copy; {new Date().getFullYear()} Roleta. Feito com paixão.</p>
       </footer>
     </div>
   );
