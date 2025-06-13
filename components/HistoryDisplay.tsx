@@ -74,9 +74,10 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
           {history.length > 0 ? (
             <>
               <ul className="max-h-60 overflow-y-auto space-y-2 mb-4 pr-2">
-                {history.map((entry) => (
+                {history.map((entry, idx) => (
                   <li key={entry.id} className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-md text-sm flex justify-between items-center shadow-sm">
-                    <span className="font-medium text-gray-800 dark:text-gray-200 break-all">{entry.name}</span>
+                    <span className="font-bold text-primary dark:text-primary-light mr-2 min-w-[2.5em] text-center">{`${idx + 1}º`}</span>
+                    <span className="font-medium text-gray-800 dark:text-gray-200 break-all flex-1">{entry.name}</span>
                     <span className="text-xs text-gray-500 dark:text-gray-400 ml-2 flex-shrink-0">{entry.date}</span>
                   </li>
                 ))}
