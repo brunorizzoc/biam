@@ -220,7 +220,7 @@ const App: React.FC = () => {
         onSpinAgain={spinAgain}
       />
       <footer className="w-full pt-8 pb-4 text-center text-xs text-gray-500 dark:text-gray-400 bg-transparent">
-        <p>&copy; {new Date().getFullYear()} Roleta. Feito com paixão.</p>
+        <p>&copy; {new Date().getFullYear()} Roleta Sorteio. BIAM ©️.</p>
       </footer>
     </div>
   );
