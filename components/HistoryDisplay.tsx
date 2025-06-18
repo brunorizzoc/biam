@@ -58,7 +58,7 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
   }
 
   return (
-    <div className="w-full max-w-md mt-6">
+    <div className="w-full max-w-xs sm:max-w-sm md:max-w-md mt-6">
       <button 
         onClick={() => setIsOpen(!isOpen)}
         className="w-full p-4 text-left flex justify-between items-center text-lg font-medium text-primary dark:text-primary-light hover:bg-primary-light/10 dark:hover:bg-primary-dark/20 rounded-t-lg shadow border-x border-t border-gray-200 dark:border-gray-700/50"
@@ -69,24 +69,23 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
         {isOpen ? <IconChevronUp className="w-5 h-5" /> : <IconChevronDown className="w-5 h-5" />}
       </button>
       {isOpen && (
-        <div id="history-content" className="p-4 bg-white dark:bg-dark-background/60 shadow-lg rounded-b-lg border-x border-b border-gray-200 dark:border-gray-700/50">
+        <div id="history-content" className="p-4 bg-white dark:bg-dark-background/60 shadow-lg rounded-b-lg border-x border-b border-gray-200 dark:border-gray-700/50 max-h-64 overflow-y-auto">
           {history.length > 0 ? (
             <>
-              <ul className="max-h-60 overflow-y-auto space-y-2 mb-4 pr-2">
+              <ul className="space-y-2 mb-4 pr-2">
                 {[...history].reverse().map((entry: HistoryEntry, idx: number) => (
-                  <li key={entry.id} className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-md text-sm flex justify-between items-center shadow-sm">
-                    <span className="font-bold text-primary dark:text-primary-light mr-2 min-w-[2.5em] text-center">{`${idx + 1}º`}</span>
-                    <span className="font-medium text-gray-800 dark:text-gray-200 break-all flex-1">{entry.name}</span>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 ml-2 flex-shrink-0">{entry.date}</span>
+                  <li key={entry.id} className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-md text-sm flex items-start shadow-sm">
+                    <span className="font-bold text-primary dark:text-primary-light mr-2 min-w-[2.5em] text-center pt-1">{`${idx + 1}º`}</span>
+                    <div className="flex-1 flex flex-col">
+                      <span className="font-medium text-gray-800 dark:text-gray-200 break-all">{entry.name}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">{entry.date}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
               <div className="flex flex-col sm:flex-row gap-3 mt-4">
                 <Button onClick={() => exportHistory('txt')} variant="secondary" size="sm" className="w-full sm:w-auto">
                   <IconDownload className="w-4 h-4" /> Exportar .txt
-                </Button>
-                <Button onClick={() => exportHistory('csv')} variant="secondary" size="sm" className="w-full sm:w-auto">
-                  <IconDownload className="w-4 h-4" /> Exportar .csv
                 </Button>
                 <Button onClick={clearHistory} variant="danger" size="sm" className="w-full sm:w-auto sm:ml-auto">
                   <IconTrash className="w-4 h-4" /> Limpar Histórico

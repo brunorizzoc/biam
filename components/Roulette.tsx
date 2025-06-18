@@ -1,20 +1,29 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { RouletteItem } from '../types';
 import { generateSegmentColors } from '../utils/colorUtils';
+import { ColorPalette } from '../utils/colorPalettes';
 
 interface RouletteProps {
   items: RouletteItem[];
   rotation: number; // in degrees
   isSpinning: boolean;
   size?: number; // diameter of the roulette
+  palette?: ColorPalette;
 }
 
-const Roulette: React.FC<RouletteProps> = ({ items, rotation, isSpinning, size = 360 }) => {
+const Roulette: React.FC<RouletteProps> = ({ items, rotation, isSpinning, size = 360, palette }) => {
   const radius = size / 2;
   const centerX = radius;
   const centerY = radius;
 
-  const colors = useMemo(() => generateSegmentColors(items.length), [items.length]);
+  // Se uma paleta foi passada, use as cores dela, senão use o padrão
+  const colors = useMemo(() => {
+    if (palette && palette.colors.length > 0) {
+      // Repete as cores se houver mais segmentos que cores
+      return Array.from({length: items.length}, (_, i) => palette.colors[i % palette.colors.length]);
+    }
+    return generateSegmentColors(items.length);
+  }, [items.length, palette]);
 
   if (items.length === 0) {
     return (
