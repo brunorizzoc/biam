@@ -145,6 +145,14 @@ const App: React.FC = () => {
             <div className="flex items-center justify-between mb-2">
               <ColorPaletteSelector selectedPalette={paletteIndex} onSelect={setPaletteIndex} />
             </div>
+            <button
+              onClick={toggleTheme}
+              className="w-full flex items-center justify-center gap-2 p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition text-lg font-medium mb-4"
+              aria-label="Alternar modo claro/escuro (menu)"
+              type="button"
+            >
+              {theme === 'light' ? '🌙 Modo Escuro' : '☀️ Modo Claro'}
+            </button>
             <div className="w-full max-w-md mx-auto">
               <HistoryDisplay history={history} clearHistory={clearHistory} />
             </div>
