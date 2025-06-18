@@ -45,7 +45,7 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
           className="w-full p-3 text-left flex justify-between items-center text-md font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-dark-background/80 rounded-lg shadow border border-gray-200 dark:border-gray-700/50"
           aria-expanded={isOpen}
         >
-          Histórico de Vencedores (0)
+          Histórico (0)
           {isOpen ? <IconChevronUp className="w-5 h-5" /> : <IconChevronDown className="w-5 h-5" />}
         </button>
         {isOpen && (
@@ -65,7 +65,7 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({ history, clearHistory }
         aria-expanded={isOpen}
         aria-controls="history-content"
       >
-        Histórico de Vencedores ({history.length})
+        Histórico ({history.length})
         {isOpen ? <IconChevronUp className="w-5 h-5" /> : <IconChevronDown className="w-5 h-5" />}
       </button>
       {isOpen && (
